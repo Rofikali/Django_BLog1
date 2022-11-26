@@ -1,0 +1,82 @@
+{% extends '../core/base.html' %}
+
+{% load urlify %}
+
+{% block title %}
+{{ title }} {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+
+<h1> Only single post is here </h1>
+<div class="container shadow-sm p-3 my-3">
+    
+    {% if request.user.is_superuser or request.user.is_superuser %}
+        <img src="{{ data.image.url }} " alt="Image"> <br>
+        <h2>{{ data.title | urlify }}</h2>
+        <p>{{ data.content }}</p>
+        <p>{{ data.timestamp }}</p>
+        <br>
+        Author : {{ data.user.username|title }}
+        <br>
+        <button class="btn">
+            <a href='{% url "posts:post-update" data.id %}'>Update Post</a>
+        </button>
+        <button class="btn btn-danger">
+            <a href='{% url "posts:post-delete" data.id %}'>Delete Post</a>
+        </button>
+        <button class="btn">
+            <a href='{% url "posts:home" %}'>Cancel</a>
+        </button>
+    <br>
+    {% else %}
+    <img src="{{ data.image.url }} " alt="Image"> <br>
+    <h2>{{ data.title }}</h2>
+    <p>{{ data.content }}</p>
+    <p>{{ data.timestamp }}</p>
+    <br>
+    Author : {{ data.user.username|title }}
+        <br>
+    {% endif %}
+    {{ request.build_absolute_uri }}
+    
+
+    <br>
+    {% comment %} <a href="{{ request.build_absolute_uri }}">
+        Share on Facebook
+    </a> {% endcomment %}
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u=
+    {{ request.build_absolute_uri }}/">
+        Share on Facebook
+        </a>
+
+
+    <br>
+    <a href="https://twitter.com/{{ data.content | urlify }} %20
+        {{ request.build_absolute_uri }}
+        ">
+        Share on Twitter
+    </a>
+
+    <br>
+    <a
+        href="https://www.linkedin.com/shareArticle?mini=true&url=
+        {{ request.build_absolute_uri }}&title=
+        Be%20first%20%7C%20Join%20Swift%20for%20Entrepreneurs&summary=Swift%20for%20Entrepreneurs%20is%20a%20project-based%20programming%20course%20for%20non-technical%20founders.%20We'll%20learn%20how%20to%20build%20iOS%20apps%20from%20scratch%20using%20Apple's%20new%20programming%20language:%20Swift.%20Be%20first%20and%20learn%20with%20me!&source=
+        http://swiftforentrepreneurs.com/">
+        Share on Linkedin
+    </a>
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,15 @@
+views.py
+{
+    def post_detail(request, title):
+        data = get_object_or_404(Posts, title=title)
+        return render(request, 'posts/detail_post.html', {'data': data})
+}
+models.py 
+{
+    def get_absolute_url(self):
+        return reverse('posts:post-detail', kwargs={'title': self.title})
+}
+urls.py
+{
+        path("post/<str:title>/", post_detail, name="post-detail")
+}

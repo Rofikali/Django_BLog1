@@ -1,0 +1,8 @@
+NOt done
+
+social login ( go with that )
+ 	after social login all things are need to be done
+
+
+Template tags not done 
+

@@ -1,0 +1,31 @@
+{% extends '../core/base.html' %}
+
+
+{% block title %}
+{{ title }} {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+
+<h1> Only single post is here </h1>
+<h2>{{ data.title }}</h2>
+<p>{{ data.content }}</p>
+<p>{{ data.timestamp }}</p>
+
+
+<button>
+    <a href='{% url "posts:post-update" data.id %}'>Update Post</a>
+</button>
+<button>
+    <a href='{% url "posts:post-delete" data.id %}'>Delete Post</a>
+</button>
+
+{% endblock content %}

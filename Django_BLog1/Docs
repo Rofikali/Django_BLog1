@@ -1,0 +1,111 @@
+Importants --> Slug with not with id with slug field would be.
+
+
+start projects ( django-admin startproject core .)
+{
+    makemigrations,
+    migrate,
+    createsuperuser,
+    done...........
+}
+
+start app ( posts )
+{
+    install app ( projects setting.py file ),
+    include apps url ( projects urls.py file ),
+    create urls.py ( posts/urls.py ),
+    done...........
+}
+
+Creating Models 
+{
+	Creating a model with contents
+}
+	
+
+model admin 
+{
+    create PostsModel ( add data like title, content )
+    register PostsModel to Apps admin.py file
+     done...........
+}
+
+customizing admin file 
+{
+    list_display = ['id','title'] ( like this )
+    list_filters,
+    list_editable,
+    list_ordering
+     done...........
+}
+
+
+views 
+{
+    creaating first view ( for app like Posts app )
+}
+
+CRUD 
+{
+    careate = POST -> Make new,
+    retrieve = GET --> list / Search,
+    update = PUT/PATCH --> Edit,
+    delete = DELETE --> Delete/Destroy,
+}
+
+Templates 
+{
+    dir = BASE_DIR / 'templates',
+    bsae template .html,
+    template inheritance,
+
+}
+
+Query_set 
+{
+    Basics like = Posts.objects.all()
+    Posts.objects.get(id=1)
+}
+
+Query_set something advance
+{
+    get objects or 404
+}
+
+Adding Boostrape 
+{
+    static css <link rel="stylesheet" href=" {% static 'css/base.css' %} ">
+    static js <script src="{% static 'boot_js/min.js' %}"></script>
+
+}
+
+Pagination 
+{
+    Go to docs everything is there
+}
+
+File Upload
+{
+    so hard to find main link
+}
+
+Slug field 
+{
+    slugify()
+}
+
+authentication 
+{
+    all are easy just think about it peasefully
+}
+
+
+
+
+
+
+
+
+
+
+

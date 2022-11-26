@@ -1,0 +1,54 @@
+{% extends '../core/base.html' %}
+
+{% block title %}{{ title }} {{ block.super }} {% endblock title %}
+
+{% block content %}
+
+<h1> All posts are here </h1>
+{% for data in page_obj %}
+<div class="container m-4 shadow-sm p-3">
+    <h2>
+        <img src="{{ data.image.url }} " alt="Image"> <br>
+        <a href="{{ data.get_absolute_url }}">
+            {{ data.title }} <br>
+        </a>
+        {{ data.timestamp }} <br>
+        Author : {{ data.user.username|title }}
+    </h2>
+    <p>{{ data.content |truncatewords:"10" }}</p>
+</div>
+{% endfor %}
+
+
+{% comment %} pagination {% endcomment %}
+
+<div class="pagination">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <a class="page-link" href="?page=1">&laquo;</a>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    {{page_obj.previous_page_number }}
+                </a>
+            </li>
+            {% endif %}
+
+            {% if page_obj.number %}
+            <li class="bg-success page-link text-white bg-opacity-75">{{ page_obj.number }}</li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    {{page_obj.next_page_number }}
+                </a>
+            </li>
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+
+{% endblock content %}

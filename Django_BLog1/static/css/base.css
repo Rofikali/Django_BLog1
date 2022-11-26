@@ -1,0 +1,15 @@
+h1 {
+    color: red;
+}
+
+body {
+    background-color: rgb(236, 230, 230);
+    list-style: circle;
+}
+
+img {
+    width: 350px;
+    height: 350px;
+    margin: auto;
+    mask-repeat: no-repeat;
+}
